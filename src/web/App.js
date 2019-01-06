@@ -3,15 +3,24 @@ import { connect } from 'react-redux';
 import { withRouter, Link, Route } from 'react-router-dom';
 import { Home, Intro, Playlist } from './routes';
 
+import { testRequest } from 'shared/actions/test.action';
+
 @withRouter
 @connect(
   (state, props) => ({
     ui: state.ui.name,
     common: state.shared.common.name,
+    title: state.shared.test.title,
   }),
-  {},
+  {
+    testRequest,
+  },
 )
 class App extends Component {
+  componentDidMount() {
+    this.props.testRequest(1);
+  }
+
   render() {
     return (
       <div className="App">
@@ -29,6 +38,7 @@ class App extends Component {
         <h1>{this.props.ui}</h1>
         <h2>{this.props.common}</h2>
         {process.env.REACT_APP_API_URL}
+        <h3>API TEST: {this.props.title}</h3>
         <hr />
         <Route exact path="/" component={Home} />
         <Route path="/intro" component={Intro} />
