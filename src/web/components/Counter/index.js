@@ -12,6 +12,9 @@ const Counter = ({ value, onIncrease, onDecrease }) => {
       <button type="button" onClick={onDecrease}>
         -
       </button>
+      <div>
+        이미지 테스트 : <span className="play-btn" />
+      </div>
     </div>
   );
 };

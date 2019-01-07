@@ -1,6 +1,11 @@
 @import 'main';
+@import 'sprite';
 
 .counter {
   font-size: 1rem;
   color: $red-color;
+  .play-btn {
+    display: block;
+    @include retina-sprite($ic-control-play-group);
+  }
 }
